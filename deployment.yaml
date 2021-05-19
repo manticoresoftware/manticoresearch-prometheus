@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manticore-exporter
+  labels:
+    name: manticore-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: manticore-exporter
+  template:
+    metadata:
+      labels:
+        name: manticore-exporter
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "8080"
+        prometheus.io/scrape: "true"
+    spec:
+      containers:
+      - name: manticore-exporter
+        image: manticoresearch/prometheus-exporter:3.6.0.0
+        imagePullPolicy: Always
+        env:
+          - name: MANTICORE_HOST
+            value: "manticore-manticoresearch-balancer-svc"
+          - name: MANTICORE_PORT
+            value: "9306"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
+      imagePullSecrets:
+      - name: registry-manticore
