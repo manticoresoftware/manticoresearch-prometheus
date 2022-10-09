@@ -24,6 +24,6 @@ env:
 kubectl -n {namespace} apply -f deployment.yaml
 ```
 
-The exporter will integrate with your Prometheus automatically, you don't need to configure scaping it from the Prometheus' side.
+The exporter will integrate with your Prometheus automatically, you don't need to configure scraping it from the Prometheus' side.
 
 The exporter is used by [Manticore Search Helm Chart](https://github.com/manticoresoftware/manticoresearch-helm), no need to setup it additionally.
