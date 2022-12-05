@@ -15,7 +15,7 @@ spec:
         name: manticore-exporter
       annotations:
         prometheus.io/path: /metrics
-        prometheus.io/port: "8080"
+        prometheus.io/port: "8081"
         prometheus.io/scrape: "true"
     spec:
       containers:
@@ -30,7 +30,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 8081
           initialDelaySeconds: 3
           periodSeconds: 3
       imagePullSecrets:
