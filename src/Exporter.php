@@ -8,7 +8,7 @@ class Exporter
     private $metricNames = [
         'uptime'                => [
             'type'        => 'counter',
-            'description' => 'Time in secons since start',
+            'description' => 'Time in seconds since start',
             'name'        => 'uptime_seconds'
         ],
         'connections'           => [
@@ -25,6 +25,11 @@ class Exporter
             'type'        => 'gauge',
             'description' => 'Manticore Search version',
             'name'        => 'version'
+        ],
+        'mysql_version'               => [
+            'type'        => 'gauge',
+            'description' => 'Manticore Search version',
+            'name'        => 'mysql_version'
         ],
         'command_search'        => [
             'type'        => 'counter',
@@ -101,6 +106,33 @@ class Exporter
             'description' => 'Count of CALL PQ runs',
             'name'        => 'command_callpq_count'
         ],
+
+
+
+        'command_set'        => [
+            'type'        => 'counter',
+            'description' => 'Count of SET runs',
+            'name'        => 'command_set_count'
+        ],
+
+        'command_json'        => [
+            'type'        => 'counter',
+            'description' => 'Count of JSON runs',
+            'name'        => 'command_json_count'
+        ],
+
+        'command_cluster'        => [
+            'type'        => 'counter',
+            'description' => 'Count of cluster commands run',
+            'name'        => 'command_cluster_count'
+        ],
+
+        'command_getfield'        => [
+            'type'        => 'counter',
+            'description' => 'Count of cluster docstore requests',
+            'name'        => 'command_getfield_count'
+        ],
+
         'agent_connect'         => [
             'type'        => 'counter',
             'description' => 'Count of connections to agents since start',
@@ -255,7 +287,143 @@ class Exporter
             'type'        => 'gauge',
             'description' => 'Statistics of rows found by queries for all time since server start. Includes number of queries and min, max, avg, 95 and 99 percentile values',
             'name'        => 'found_rows_total'
-        ]
+        ],
+
+        'agent_tfo'      => [
+            'type'        => 'gauge',
+            'description' => 'Number of successfully sent TFO packets',
+            'name'        => 'agent_tfo_total_count'
+        ],
+
+        'workers_active'      => [
+            'type'        => 'gauge',
+            'description' => 'Number of active worker threads',
+            'name'        => 'workers_active_count'
+        ],
+
+        'workers_clients_vip'      => [
+            'type'        => 'gauge',
+            'description' => 'Current connections count by vip protocol',
+            'name'        => 'workers_clients_vip_count'
+        ],
+
+        'work_queue_length'      => [
+            'type'        => 'gauge',
+            'description' => 'Count ',
+            'name'        => 'work_queue_length_count'
+        ],
+
+
+        'load_1m'      => [
+            'type'        => 'gauge',
+            'description' => 'Load average in all queues for 1min',
+            'name'        => 'load_1m_total'
+        ],
+
+        'load_5m'      => [
+            'type'        => 'gauge',
+            'description' => 'Load average in all queues for 5min',
+            'name'        => 'load_5m_total'
+        ],
+
+        'load_15m'      => [
+            'type'        => 'gauge',
+            'description' => 'Load average in all queues for 15min',
+            'name'        => 'load_15m_total'
+        ],
+
+
+        'load_primary_1m'      => [
+            'type'        => 'gauge',
+            'description' => 'Load average in primary queue for 1min',
+            'name'        => 'load_primary_1m_total'
+        ],
+
+        'load_primary_5m'      => [
+            'type'        => 'gauge',
+            'description' => 'Load average in primary queue for 5min',
+            'name'        => 'load_primary_5m_total'
+        ],
+
+        'load_primary_15m'      => [
+            'type'        => 'gauge',
+            'description' => 'Load average in primary queue for 15min',
+            'name'        => 'load_primary_15m_total'
+        ],
+
+
+        'load_secondary_1m'      => [
+            'type'        => 'gauge',
+            'description' => 'Load average in secondary queue for 1min',
+            'name'        => 'load_secondary_1m_total'
+        ],
+
+        'load_secondary_5m'      => [
+            'type'        => 'gauge',
+            'description' => 'Load average in secondary queue for 5min',
+            'name'        => 'load_secondary_5m_total'
+        ],
+
+        'load_secondary_15m'      => [
+            'type'        => 'gauge',
+            'description' => 'Load average in secondary queue for 15min',
+            'name'        => 'load_secondary_15m_total'
+        ],
+
+
+        'query_cpu'      => [
+            'type'        => 'gauge',
+            'description' => 'Query CPU time since start',
+            'name'        => 'query_cpu_total'
+        ],
+
+        'query_reads'      => [
+            'type'        => 'gauge',
+            'description' => 'Total read IO calls (fired by search queries)',
+            'name'        => 'query_reads_total'
+        ],
+
+        'query_readkb'      => [
+            'type'        => 'gauge',
+            'description' => 'Total read IO traffic',
+            'name'        => 'query_readkb_total'
+        ],
+
+        'query_readtime'      => [
+            'type'        => 'gauge',
+            'description' => 'Total read IO time',
+            'name'        => 'query_readtime_total'
+        ],
+
+        'avg_query_cpu'      => [
+            'type'        => 'gauge',
+            'description' => 'Average CPU time since start',
+            'name'        => 'avg_query_cpu_total'
+        ],
+
+        'avg_dist_wait'      => [
+            'type'        => 'gauge',
+            'description' => 'Time spent waiting for remote agents in distributed queries',
+            'name'        => 'avg_dist_wait_total'
+        ],
+
+        'avg_query_reads'      => [
+            'type'        => 'gauge',
+            'description' => 'Average read IO calls (fired by search queries)',
+            'name'        => 'avg_query_reads_total'
+        ],
+
+        'avg_query_readkb'      => [
+            'type'        => 'gauge',
+            'description' => 'Average read IO traffic',
+            'name'        => 'avg_query_readkb_total'
+        ],
+
+        'avg_query_readtime'      => [
+            'type'        => 'gauge',
+            'description' => 'Average read IO time',
+            'name'        => 'avg_query_readtime_total'
+        ],
     ];
 
     public function __construct(mysqli $mysqli)
@@ -275,6 +443,15 @@ class Exporter
         if ($data) {
             $data = $data->fetch_all(MYSQLI_ASSOC);
             foreach ($data as $row) {
+                if (strpos($row['Counter'], 'load') === 0){
+                    $loadMetricName = $row['Counter'];
+                    $loadValue = explode(' ', $row['Value']);
+
+                    $this->addMetric("{$loadMetricName}_1m", $loadValue[0]);
+                    $this->addMetric("{$loadMetricName}_5m", $loadValue[1]);
+                    $this->addMetric("{$loadMetricName}_15m", $loadValue[2]);
+                    continue;
+                }
                 $this->addMetric($row['Counter'], $row['Value']);
             }
         }
@@ -327,8 +504,8 @@ class Exporter
     public function drawMetrics()
     {
         foreach ($this->metrics as $metricName => $metrics) {
-            echo "# HELP $metricName " . $metrics['info'] . "\n";
-            echo "# TYPE $metricName " . $metrics['type'] . "\n";
+            echo "# HELP manticore_$metricName " . $metrics['info'] . "\n";
+            echo "# TYPE manticore_$metricName " . $metrics['type'] . "\n";
 
             foreach ($metrics['data'] as $metric) {
 
