@@ -1,0 +1,17 @@
+name: CLT tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  clt:
+    name: Run CLT tests
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: manticoresoftware/clt@0.1.23
+        with:
+          image: ghcr.io/manticoresoftware/manticoresearch:tests-kit-latest
+          test_prefix: tests/clt-tests/
