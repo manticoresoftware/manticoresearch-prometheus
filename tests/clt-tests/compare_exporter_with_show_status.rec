@@ -9,7 +9,7 @@ MANTICORE_HOST=localhost MANTICORE_PORT=9306 php index.php | grep -e "^manticore
 searchd --iostats --cpustats --status | cut -d":" -f1 | tail -n +10 | sort > /tmp/searchd_output.txt
 ––– output –––
 ––– input –––
-ls -la .
+ls -la /
 ––– output –––
 ––– input –––
 ls -1 /tmp
