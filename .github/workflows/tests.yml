@@ -1,17 +1,22 @@
 name: CLT tests
 
 on:
+  schedule:
+    - cron: '00 20 * * *'
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   clt:
     name: Run CLT tests
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - uses: manticoresoftware/clt@0.1.23
         with:
-          image: ghcr.io/manticoresoftware/manticoresearch:tests-kit-latest
+          image: ghcr.io/manticoresoftware/manticoresearch:test-kit-latest
           test_prefix: tests/clt-tests/
+          run_args: -v ".:/.clt/"
