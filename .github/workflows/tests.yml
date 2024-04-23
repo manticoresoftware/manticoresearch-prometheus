@@ -15,5 +15,5 @@ jobs:
     steps:
       - uses: manticoresoftware/clt@0.1.23
         with:
-          image: ghcr.io/manticoresoftware/manticoresearch:tests-kit-latest
+          image: ghcr.io/manticoresoftware/manticoresearch:test-kit-latest
           test_prefix: tests/clt-tests/
