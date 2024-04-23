@@ -19,3 +19,4 @@ jobs:
         with:
           image: ghcr.io/manticoresoftware/manticoresearch:test-kit-latest
           test_prefix: tests/clt-tests/
+          run_args: -v ".:/.clt/"
