@@ -15,6 +15,9 @@ exporter_output.txt
 healthy
 searchd_output.txt
 ––– input –––
+cat /tmp/exporter_output.txt | grep "<b>Warning</b>" >/dev/null || echo "Warnings found." && cat /tmp/exporter_output.txt
+––– output –––
+––– input –––
 while read -r line; do   grep -q "^$line" /tmp/exporter_output.txt || echo "$line"; done < /tmp/searchd_output.txt
 ––– output –––
 ––– input –––
