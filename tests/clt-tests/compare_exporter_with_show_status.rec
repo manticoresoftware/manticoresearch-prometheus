@@ -3,7 +3,10 @@ searchd --iostats --cpustats | grep "listening on 127.0.0.1:9306 for mysql"
 ––– output –––
 listening on 127.0.0.1:9306 for mysql
 ––– input –––
-MANTICORE_HOST=localhost MANTICORE_PORT=9306 php index.php | grep -e "^manticore" | cut -d" " -f1 | sed 's/^manticore_//' | sed 's/qcache_thresh_microseconds/qcache_thresh_msec/' | sort > /tmp/exporter_output.txt
+MANTICORE_HOST=localhost MANTICORE_PORT=9306 php index.php > /tmp/exporter_unfiltered_output.txt
+––– output –––
+––– input –––
+cat /tmp/exporter_unfiltered_output.txt | grep -e "^manticore" | cut -d" " -f1 | sed 's/^manticore_//' | sed 's/qcache_thresh_microseconds/qcache_thresh_msec/' | sort > /tmp/exporter_output.txt
 ––– output –––
 ––– input –––
 searchd --iostats --cpustats --status | cut -d":" -f1 | tail -n +10 | sort > /tmp/searchd_output.txt
@@ -15,7 +18,7 @@ exporter_output.txt
 healthy
 searchd_output.txt
 ––– input –––
-cat /tmp/exporter_output.txt | grep "<b>Warning</b>" >/dev/null || echo "Warnings found." && cat /tmp/exporter_output.txt
+/tmp/exporter_unfiltered_output.txt | grep "<b>Warning</b>" >/dev/null || echo "Warnings found." && cat /tmp/exporter_unfiltered_output.txt
 ––– output –––
 ––– input –––
 while read -r line; do   grep -q "^$line" /tmp/exporter_output.txt || echo "$line"; done < /tmp/searchd_output.txt
