@@ -461,9 +461,9 @@ class Exporter {
             $threads = $threads->fetch_all(MYSQLI_ASSOC);
             foreach ($threads as $row) {
 
-//                if (strtolower($row['Info']) === 'show threads') {
-//                    continue;
-//                }
+                if (strtolower($row['Info']) === 'show threads') {
+                    continue;
+                }
 
                 $threadCount++;
 
