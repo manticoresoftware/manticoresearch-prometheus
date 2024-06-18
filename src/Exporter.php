@@ -1,6 +1,7 @@
 <?php
 
-class Exporter {
+class Exporter
+{
 
     private $connection;
     private $metrics = [];
@@ -424,16 +425,19 @@ class Exporter {
         ],
     ];
 
-    public function __construct(mysqli $mysqli) {
+    public function __construct(mysqli $mysqli)
+    {
         $this->setConnection($mysqli);
         $this->getMetrics();
     }
 
-    private function setConnection(mysqli $mysqli) {
+    private function setConnection(mysqli $mysqli)
+    {
         $this->connection = $mysqli;
     }
 
-    private function getMetrics() {
+    private function getMetrics()
+    {
         $data = $this->connection->query("SHOW STATUS");
         if ($data) {
             $data = $data->fetch_all(MYSQLI_ASSOC);
@@ -460,7 +464,6 @@ class Exporter {
         if ($threads) {
             $threads = $threads->fetch_all(MYSQLI_ASSOC);
             foreach ($threads as $row) {
-
                 if (strtolower($row['Info']) === 'show threads') {
                     continue;
                 }
@@ -469,9 +472,9 @@ class Exporter {
 
                 $rowTime = $row['This/prev job time'];
                 if (strpos($rowTime, 'us') !== false) {
-                    $rowTime = (int)$rowTime / 1000000;
+                    $rowTime = (int) $rowTime / 1000000;
                 } else {
-                    $rowTime = (int)$rowTime / 1000;
+                    $rowTime = (int) $rowTime / 1000;
                 }
 
                 if ($rowTime > $maxTime) {
@@ -498,38 +501,37 @@ class Exporter {
                             ['index' => $row['Index']]);
                     }
                 }
-
             }
         }
     }
 
 
-    public function drawMetrics() {
+    public function drawMetrics()
+    {
         foreach ($this->metrics as $metricName => $metrics) {
             echo "# HELP manticore_$metricName " . $metrics['info'] . "\n";
             echo "# TYPE manticore_$metricName " . $metrics['type'] . "\n";
 
             foreach ($metrics['data'] as $metric) {
-
-                echo "manticore_$metricName " . ($this->getLabel($metric['label'] ?? null)) . "" . $this->formatValue($metric['value']) . "\n";
+                echo "manticore_$metricName ".
+                    ($this->getLabel($metric['label'] ?? null))."".
+                    $this->formatValue($metric['value'])."\n";
             }
         }
 
         if ($this->metrics !== []) {
             file_put_contents(HEALTH_FILE, '1');
         }
-
     }
 
-    private function addMetric($name, $value, $label = null) {
+    private function addMetric($name, $value, $label = null)
+    {
         if (isset($this->metricNames[$name]['name'])) {
-
             if ($name === 'killed_rate') {
-                $value = (float)$value;
+                $value = (float) $value;
             }
 
             if (strpos($name, 'query_time_') !== false || strpos($name, 'found_rows_') !== false) {
-
                 $row = json_decode($value, true);
 
                 foreach ($row as $k => $v) {
@@ -538,19 +540,15 @@ class Exporter {
                     $this->metrics[$this->metricNames[$name]['name']]['data'][] = $metricData;
                 }
             } elseif (strpos($name, 'version') !== false) {
-
                 $metricData = ['value' => 1];
                 $metricData['label'] = ['version' => $value];
                 $this->metrics[$this->metricNames[$name]['name']]['data'][] = $metricData;
-
             } else {
-
                 $metricData = ['value' => $value];
                 if (isset($label)) {
                     $metricData['label'] = $label;
                 }
                 $this->metrics[$this->metricNames[$name]['name']]['data'][] = $metricData;
-
             }
 
             $this->metrics[$this->metricNames[$name]['name']]['type'] = $this->metricNames[$name]['type'];
@@ -558,10 +556,10 @@ class Exporter {
         }
     }
 
-    private function getLabel($label) {
+    private function getLabel($label)
+    {
         $result = '';
         if (!empty($label)) {
-
             $labelCond = [];
             foreach ($label as $name => $value) {
                 $labelCond[] = $name . '="' . $value . '"';
@@ -575,7 +573,8 @@ class Exporter {
         return $result;
     }
 
-    private function formatValue($value) {
+    private function formatValue($value)
+    {
         if (in_array($value, ['OFF', '-'])) {
             $value = 0;
         }
