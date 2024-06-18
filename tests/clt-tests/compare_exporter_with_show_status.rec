@@ -15,6 +15,7 @@ searchd --iostats --cpustats --status | cut -d":" -f1 | tail -n +10 | sort > /tm
 ls -1 /tmp
 ––– output –––
 exporter_output.txt
+exporter_unfiltered_output.txt
 healthy
 searchd_output.txt
 ––– input –––
