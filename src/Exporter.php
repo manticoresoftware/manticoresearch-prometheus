@@ -467,7 +467,7 @@ class Exporter {
 
                 $threadCount++;
 
-                $rowTime = $row['This/prev job time---'];
+                $rowTime = $row['This/prev job time'];
                 if (strpos($rowTime, 'us') !== false) {
                     $rowTime = (int)$rowTime / 1000000;
                 } else {
