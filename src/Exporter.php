@@ -262,6 +262,16 @@ class Exporter
             'description' => 'Rate of deleted/indexed documents',
             'name' => 'killed_rate'
         ],
+        'disk_mapped_cached_ratio_percent' => [
+            'type' => 'gauge',
+            'description' => 'Disc mapped cached ratio %',
+            'name' => 'disk_mapped_cached_ratio_percent'
+        ],
+        'ram_chunk' => [
+            'type' => 'gauge',
+            'description' => 'Ram chunk size',
+            'name' => 'ram_chunk_size'
+        ],
         'disk_chunks' => [
             'type' => 'gauge',
             'description' => 'Number of RT index disk chunks',
@@ -497,7 +507,27 @@ class Exporter
                 if ($tableStatus) {
                     $tableStatus = $tableStatus->fetch_all(MYSQLI_ASSOC);
                     foreach ($tableStatus as $tableStatusRow) {
+
+                        if (in_array($tableStatusRow['Variable_name'], ['disk_mapped','disk_mapped_cached'])){
+                            $name = $tableStatusRow['Variable_name'];
+                            $$name = (int) $tableStatusRow['Value'];
+                        }
+
                         $this->addMetric($tableStatusRow['Variable_name'], $tableStatusRow['Value'],
+                            ['index' => $row['Index']]);
+                    }
+
+                    if (isset($disk_mapped) && isset($disk_mapped_cached)){
+
+                        $ratio = 0;
+
+                        if ($disk_mapped_cached > $disk_mapped){
+                            $ratio = 100;
+                        } elseif ($disk_mapped_cached !== 0 && $disk_mapped !== 0){
+                            $ratio = ($disk_mapped_cached / $disk_mapped) * 100;
+                        }
+
+                        $this->addMetric('disk_mapped_cached_ratio_percent', $ratio,
                             ['index' => $row['Index']]);
                     }
                 }
