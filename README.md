@@ -1,6 +1,6 @@
 # Manticore Search Prometheus Exporter
 
-Version: 3.6.0.1
+Version: 6.3.2.0
 
 ### Installation
 

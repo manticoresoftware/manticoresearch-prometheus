@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: manticore-exporter
-        image: manticoresearch/prometheus-exporter:6.3.0.1
+        image: manticoresearch/prometheus-exporter:6.3.2.0
         imagePullPolicy: Always
         env:
           - name: MANTICORE_HOST
