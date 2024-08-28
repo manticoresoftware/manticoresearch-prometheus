@@ -162,6 +162,11 @@ class Exporter
             'description' => 'Current connections count',
             'name' => 'current_connections_count'
         ],
+        'workers_clients_buddy' => [
+            'type' => 'gauge',
+            'description' => 'Current connections count From buddy',
+            'name' => 'workers_clients_buddy_count'
+        ],
         'query_wall' => [
             'type' => 'counter',
             'description' => 'Query wall time in seconds since start',
