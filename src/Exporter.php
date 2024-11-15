@@ -106,32 +106,251 @@ class Exporter
             'description' => 'Count of CALL PQ runs',
             'name' => 'command_callpq_count'
         ],
-
-
         'command_set' => [
             'type' => 'counter',
             'description' => 'Count of SET runs',
             'name' => 'command_set_count'
         ],
-
         'command_json' => [
             'type' => 'counter',
             'description' => 'Count of JSON runs',
             'name' => 'command_json_count'
         ],
-
         'command_cluster' => [
             'type' => 'counter',
             'description' => 'Count of cluster commands run',
             'name' => 'command_cluster_count'
         ],
-
         'command_getfield' => [
             'type' => 'counter',
             'description' => 'Count of cluster docstore requests',
             'name' => 'command_getfield_count'
         ],
-
+        'insert_replace_stats_ms_avg_1m' => [
+            'type' => 'gauge',
+            'description' => 'Average time spent on insert or replace operations in the past 1min',
+            'name' => 'insert_replace_stats_ms_avg_1m_millisecond'
+        ],
+        'insert_replace_stats_ms_avg_5m' => [
+            'type' => 'gauge',
+            'description' => 'Average time spent on insert or replace operations in the past 5min',
+            'name' => 'insert_replace_stats_ms_avg_5m_millisecond'
+        ],
+        'insert_replace_stats_ms_avg_15m' => [
+            'type' => 'gauge',
+            'description' => 'Average time spent on insert or replace operations in the past 15min',
+            'name' => 'insert_replace_stats_ms_avg_15m_millisecond'
+        ],
+        'insert_replace_stats_ms_min_1m' => [
+            'type' => 'gauge',
+            'description' => 'Minimum time spent on insert or replace operations in the past 1min',
+            'name' => 'insert_replace_stats_ms_min_1m_millisecond'
+        ],
+        'insert_replace_stats_ms_min_5m' => [
+            'type' => 'gauge',
+            'description' => 'Minimum time spent on insert or replace operations in the past 5min',
+            'name' => 'insert_replace_stats_ms_min_5m_millisecond'
+        ],
+        'insert_replace_stats_ms_min_15m' => [
+            'type' => 'gauge',
+            'description' => 'Minimum time spent on insert or replace operations in the past 15min',
+            'name' => 'insert_replace_stats_ms_min_15m_millisecond'
+        ],
+        'insert_replace_stats_ms_max_1m' => [
+            'type' => 'gauge',
+            'description' => 'Maximum time spent on insert or replace operations in the past 1min',
+            'name' => 'insert_replace_stats_ms_max_1m_millisecond'
+        ],
+        'insert_replace_stats_ms_max_5m' => [
+            'type' => 'gauge',
+            'description' => 'Maximum time spent on insert or replace operations in the past 5min',
+            'name' => 'insert_replace_stats_ms_max_5m_millisecond'
+        ],
+        'insert_replace_stats_ms_max_15m' => [
+            'type' => 'gauge',
+            'description' => 'Maximum time spent on insert or replace operations in the past 15min',
+            'name' => 'insert_replace_stats_ms_max_15m_millisecond'
+        ],
+        'insert_replace_stats_ms_pct95_1m' => [
+            'type' => 'gauge',
+            'description' => '95th percentile of time spent on insert or replace operations in the past 1min',
+            'name' => 'insert_replace_stats_ms_pct95_1m_millisecond'
+        ],
+        'insert_replace_stats_ms_pct95_5m' => [
+            'type' => 'gauge',
+            'description' => '95th percentile of time spent on insert or replace operations in the past 5min',
+            'name' => 'insert_replace_stats_ms_pct95_5m_millisecond'
+        ],
+        'insert_replace_stats_ms_pct95_15m' => [
+            'type' => 'gauge',
+            'description' => '95th percentile of time spent on insert or replace operations in the past 15min',
+            'name' => 'insert_replace_stats_ms_pct95_15m_millisecond'
+        ],
+        'insert_replace_stats_ms_pct99_1m' => [
+            'type' => 'gauge',
+            'description' => '99th percentile of time spent on insert or replace operations in the past 1min',
+            'name' => 'insert_replace_stats_ms_pct99_1m_millisecond'
+        ],
+        'insert_replace_stats_ms_pct99_5m' => [
+            'type' => 'gauge',
+            'description' => '99th percentile of time spent on insert or replace operations in the past 5min',
+            'name' => 'insert_replace_stats_ms_pct99_5m_millisecond'
+        ],
+        'insert_replace_stats_ms_pct99_15m' => [
+            'type' => 'gauge',
+            'description' => '99th percentile of time spent on insert or replace operations in the past 15min',
+            'name' => 'insert_replace_stats_ms_pct99_15m_millisecond'
+        ],
+        'search_stats_ms_avg_1m' => [
+            'type' => 'gauge',
+            'description' => 'Average time spent on search operations in the past 1min',
+            'name' => 'search_stats_ms_avg_1m_millisecond'
+        ],
+        'search_stats_ms_avg_5m' => [
+            'type' => 'gauge',
+            'description' => 'Average time spent on search operations in the past 5min',
+            'name' => 'search_stats_ms_avg_5m_millisecond'
+        ],
+        'search_stats_ms_avg_15m' => [
+            'type' => 'gauge',
+            'description' => 'Average time spent on search operations in the past 15min',
+            'name' => 'search_stats_ms_avg_15m_millisecond'
+        ],
+        'search_stats_ms_min_1m' => [
+            'type' => 'gauge',
+            'description' => 'Minimum time spent on search operations in the past 1min',
+            'name' => 'search_stats_ms_min_1m_millisecond'
+        ],
+        'search_stats_ms_min_5m' => [
+            'type' => 'gauge',
+            'description' => 'Minimum time spent on search operations in the past 5min',
+            'name' => 'search_stats_ms_min_5m_millisecond'
+        ],
+        'search_stats_ms_min_15m' => [
+            'type' => 'gauge',
+            'description' => 'Minimum time spent on search operations in the past 15min',
+            'name' => 'search_stats_ms_min_15m_millisecond'
+        ],
+        'search_stats_ms_max_1m' => [
+            'type' => 'gauge',
+            'description' => 'Maximum time spent on search operations in the past 1min',
+            'name' => 'search_stats_ms_max_1m_millisecond'
+        ],
+        'search_stats_ms_max_5m' => [
+            'type' => 'gauge',
+            'description' => 'Maximum time spent on search operations in the past 5min',
+            'name' => 'search_stats_ms_max_5m_millisecond'
+        ],
+        'search_stats_ms_max_15m' => [
+            'type' => 'gauge',
+            'description' => 'Maximum time spent on search operations in the past 15min',
+            'name' => 'search_stats_ms_max_15m_millisecond'
+        ],
+        'search_stats_ms_pct95_1m' => [
+            'type' => 'gauge',
+            'description' => '95th percentile of time spent on search operations in the past 1min',
+            'name' => 'search_stats_ms_pct95_1m_millisecond'
+        ],
+        'search_stats_ms_pct95_5m' => [
+            'type' => 'gauge',
+            'description' => '95th percentile of time spent on search operations in the past 5min',
+            'name' => 'search_stats_ms_pct95_5m_millisecond'
+        ],
+        'search_stats_ms_pct95_15m' => [
+            'type' => 'gauge',
+            'description' => '95th percentile of time spent on search operations in the past 15min',
+            'name' => 'search_stats_ms_pct95_15m_millisecond'
+        ],
+        'search_stats_ms_pct99_1m' => [
+            'type' => 'gauge',
+            'description' => '99th percentile of time spent on search operations in the past 1min',
+            'name' => 'search_stats_ms_pct99_1m_millisecond'
+        ],
+        'search_stats_ms_pct99_5m' => [
+            'type' => 'gauge',
+            'description' => '99th percentile of time spent on search operations in the past 5min',
+            'name' => 'search_stats_ms_pct99_5m_millisecond'
+        ],
+        'search_stats_ms_pct99_15m' => [
+            'type' => 'gauge',
+            'description' => '99th percentile of time spent on search operations in the past 15min',
+            'name' => 'search_stats_ms_pct99_15m_millisecond'
+        ],
+        'update_stats_ms_avg_1m' => [
+            'type' => 'gauge',
+            'description' => 'Average time spent on update operations in the past 1min',
+            'name' => 'update_stats_ms_avg_1m_millisecond'
+        ],
+        'update_stats_ms_avg_5m' => [
+            'type' => 'gauge',
+            'description' => 'Average time spent on update operations in the past 5min',
+            'name' => 'update_stats_ms_avg_5m_millisecond'
+        ],
+        'update_stats_ms_avg_15m' => [
+            'type' => 'gauge',
+            'description' => 'Average time spent on update operations in the past 15min',
+            'name' => 'update_stats_ms_avg_15m_millisecond'
+        ],
+        'update_stats_ms_min_1m' => [
+            'type' => 'gauge',
+            'description' => 'Minimum time spent on update operations in the past 1min',
+            'name' => 'update_stats_ms_min_1m_millisecond'
+        ],
+        'update_stats_ms_min_5m' => [
+            'type' => 'gauge',
+            'description' => 'Minimum time spent on update operations in the past 5min',
+            'name' => 'update_stats_ms_min_5m_millisecond'
+        ],
+        'update_stats_ms_min_15m' => [
+            'type' => 'gauge',
+            'description' => 'Minimum time spent on update operations in the past 15min',
+            'name' => 'update_stats_ms_min_15m_millisecond'
+        ],
+        'update_stats_ms_max_1m' => [
+            'type' => 'gauge',
+            'description' => 'Maximum time spent on update operations in the past 1min',
+            'name' => 'update_stats_ms_max_1m_millisecond'
+        ],
+        'update_stats_ms_max_5m' => [
+            'type' => 'gauge',
+            'description' => 'Maximum time spent on update operations in the past 5min',
+            'name' => 'update_stats_ms_max_5m_millisecond'
+        ],
+        'update_stats_ms_max_15m' => [
+            'type' => 'gauge',
+            'description' => 'Maximum time spent on update operations in the past 15min',
+            'name' => 'update_stats_ms_max_15m_millisecond'
+        ],
+        'update_stats_ms_pct95_1m' => [
+            'type' => 'gauge',
+            'description' => '95th percentile of time spent on update operations in the past 1min',
+            'name' => 'update_stats_ms_pct95_1m_millisecond'
+        ],
+        'update_stats_ms_pct95_5m' => [
+            'type' => 'gauge',
+            'description' => '95th percentile of time spent on update operations in the past 5min',
+            'name' => 'update_stats_ms_pct95_5m_millisecond'
+        ],
+        'update_stats_ms_pct95_15m' => [
+            'type' => 'gauge',
+            'description' => '95th percentile of time spent on update operations in the past 15min',
+            'name' => 'update_stats_ms_pct95_15m_millisecond'
+        ],
+        'update_stats_ms_pct99_1m' => [
+            'type' => 'gauge',
+            'description' => '99th percentile of time spent on update operations in the past 1min',
+            'name' => 'update_stats_ms_pct99_1m_millisecond'
+        ],
+        'update_stats_ms_pct99_5m' => [
+            'type' => 'gauge',
+            'description' => '99th percentile of time spent on update operations in the past 5min',
+            'name' => 'update_stats_ms_pct99_5m_millisecond'
+        ],
+        'update_stats_ms_pct99_15m' => [
+            'type' => 'gauge',
+            'description' => '99th percentile of time spent on update operations in the past 15min',
+            'name' => 'update_stats_ms_pct99_15m_millisecond'
+        ],
         'agent_connect' => [
             'type' => 'counter',
             'description' => 'Count of connections to agents since start',
@@ -149,7 +368,7 @@ class Exporter
         ],
         'dist_queries' => [
             'type' => 'counter',
-            'description' => 'Count of queries to agent-based distributed index since start',
+            'description' => 'Count of queries to agent-based distributed table since start',
             'name' => 'dist_queries_count'
         ],
         'workers_total' => [
@@ -179,7 +398,7 @@ class Exporter
         ],
         'dist_local' => [
             'type' => 'counter',
-            'description' => 'Wall time in seconds spent searching local indexes in distributed queries since start',
+            'description' => 'Wall time in seconds spent searching local tables in distributed queries since start',
             'name' => 'dist_local_seconds',
         ],
         'dist_wait' => [
@@ -199,7 +418,7 @@ class Exporter
         ],
         'avg_dist_local' => [
             'type' => 'gauge',
-            'description' => 'Average time in seconds spent searching local indexes in distributed queries since start',
+            'description' => 'Average time in seconds spent searching local tables in distributed queries since start',
             'name' => 'avg_dist_local_seconds'
         ],
         'qcache_max_bytes' => [
@@ -254,12 +473,12 @@ class Exporter
         ],
         'ram_bytes' => [
             'type' => 'gauge',
-            'description' => 'Total size (in bytes) of RAM-resident index part',
+            'description' => 'Total size (in bytes) of RAM-resident tables part',
             'name' => 'ram_bytes'
         ],
         'disk_bytes' => [
             'type' => 'gauge',
-            'description' => 'Total size (in bytes) of all index files',
+            'description' => 'Total size (in bytes) of all tables files',
             'name' => 'disk_bytes'
         ],
         'killed_rate' => [
@@ -279,7 +498,7 @@ class Exporter
         ],
         'disk_chunks' => [
             'type' => 'gauge',
-            'description' => 'Number of RT index disk chunks',
+            'description' => 'Number of RT tables disk chunks',
             'name' => 'disk_chunks_count'
         ],
         'mem_limit' => [
@@ -302,137 +521,111 @@ class Exporter
             'description' => 'Statistics of rows found by queries for all time since server start. Includes number of queries and min, max, avg, 95 and 99 percentile values',
             'name' => 'found_rows_total'
         ],
-
         'agent_tfo' => [
             'type' => 'gauge',
             'description' => 'Number of successfully sent TFO packets',
             'name' => 'agent_tfo_total_count'
         ],
-
         'workers_active' => [
             'type' => 'gauge',
             'description' => 'Number of active worker threads',
             'name' => 'workers_active_count'
         ],
-
         'workers_clients_vip' => [
             'type' => 'gauge',
             'description' => 'Current connections count by vip protocol',
             'name' => 'workers_clients_vip_count'
         ],
-
         'work_queue_length' => [
             'type' => 'gauge',
             'description' => 'Count ',
             'name' => 'work_queue_length_count'
         ],
-
-
         'load_1m' => [
             'type' => 'gauge',
             'description' => 'Load average in all queues for 1min',
             'name' => 'load_1m_total'
         ],
-
         'load_5m' => [
             'type' => 'gauge',
             'description' => 'Load average in all queues for 5min',
             'name' => 'load_5m_total'
         ],
-
         'load_15m' => [
             'type' => 'gauge',
             'description' => 'Load average in all queues for 15min',
             'name' => 'load_15m_total'
         ],
-
-
         'load_primary_1m' => [
             'type' => 'gauge',
             'description' => 'Load average in primary queue for 1min',
             'name' => 'load_primary_1m_total'
         ],
-
         'load_primary_5m' => [
             'type' => 'gauge',
             'description' => 'Load average in primary queue for 5min',
             'name' => 'load_primary_5m_total'
         ],
-
         'load_primary_15m' => [
             'type' => 'gauge',
             'description' => 'Load average in primary queue for 15min',
             'name' => 'load_primary_15m_total'
         ],
-
-
         'load_secondary_1m' => [
             'type' => 'gauge',
             'description' => 'Load average in secondary queue for 1min',
             'name' => 'load_secondary_1m_total'
         ],
-
         'load_secondary_5m' => [
             'type' => 'gauge',
             'description' => 'Load average in secondary queue for 5min',
             'name' => 'load_secondary_5m_total'
         ],
-
         'load_secondary_15m' => [
             'type' => 'gauge',
             'description' => 'Load average in secondary queue for 15min',
             'name' => 'load_secondary_15m_total'
         ],
-
-
         'query_cpu' => [
             'type' => 'gauge',
             'description' => 'Query CPU time since start',
             'name' => 'query_cpu_total'
         ],
-
         'query_reads' => [
             'type' => 'gauge',
             'description' => 'Total read IO calls (fired by search queries)',
             'name' => 'query_reads_total'
         ],
-
         'query_readkb' => [
             'type' => 'gauge',
             'description' => 'Total read IO traffic',
             'name' => 'query_readkb_total'
         ],
-
         'query_readtime' => [
             'type' => 'gauge',
             'description' => 'Total read IO time',
             'name' => 'query_readtime_total'
         ],
-
         'avg_query_cpu' => [
             'type' => 'gauge',
             'description' => 'Average CPU time since start',
             'name' => 'avg_query_cpu_total'
         ],
-
         'avg_dist_wait' => [
             'type' => 'gauge',
             'description' => 'Time spent waiting for remote agents in distributed queries',
             'name' => 'avg_dist_wait_total'
         ],
-
         'avg_query_reads' => [
             'type' => 'gauge',
             'description' => 'Average read IO calls (fired by search queries)',
             'name' => 'avg_query_reads_total'
         ],
-
         'avg_query_readkb' => [
             'type' => 'gauge',
             'description' => 'Average read IO traffic',
             'name' => 'avg_query_readkb_total'
         ],
-
         'avg_query_readtime' => [
             'type' => 'gauge',
             'description' => 'Average read IO time',
@@ -457,7 +650,7 @@ class Exporter
         if ($data) {
             $data = $data->fetch_all(MYSQLI_ASSOC);
             foreach ($data as $row) {
-                if (strpos($row['Counter'], 'load') === 0) {
+                if (strpos($row['Counter'], 'load') === 0 || strpos($row['Counter'], '_stats_ms_') !== false) {
                     $loadMetricName = $row['Counter'];
                     $loadValue = explode(' ', $row['Value']);
 
@@ -508,7 +701,8 @@ class Exporter
             $data = $data->fetch_all(MYSQLI_ASSOC);
             foreach ($data as $row) {
 
-                $tableStatus = $this->connection->query('SHOW INDEX ' . $row['Index'] . ' STATUS');
+                $tableName = $row['Index'] ?? $row['Table'];
+                $tableStatus = $this->connection->query('SHOW TABLE ' . $tableName . ' STATUS');
                 if ($tableStatus) {
                     $tableStatus = $tableStatus->fetch_all(MYSQLI_ASSOC);
                     foreach ($tableStatus as $tableStatusRow) {
@@ -519,7 +713,7 @@ class Exporter
                         }
 
                         $this->addMetric($tableStatusRow['Variable_name'], $tableStatusRow['Value'],
-                            ['index' => $row['Index']]);
+                            ['table' => $tableName]);
                     }
 
                     if (isset($disk_mapped) && isset($disk_mapped_cached)){
@@ -533,7 +727,7 @@ class Exporter
                         }
 
                         $this->addMetric('disk_mapped_cached_ratio_percent', $ratio,
-                            ['index' => $row['Index']]);
+                            ['table' => $tableName]);
                     }
                 }
             }
@@ -562,6 +756,10 @@ class Exporter
     private function addMetric($name, $value, $label = null)
     {
         if (isset($this->metricNames[$name]['name'])) {
+
+            if ($value === 'N/A'){
+                $value = 0;
+            }
             if ($name === 'killed_rate') {
                 $value = (float) $value;
             }
