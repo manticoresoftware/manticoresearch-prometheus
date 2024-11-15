@@ -1,6 +1,6 @@
 # Manticore Search Prometheus Exporter
 
-Version: 6.3.2.0
+Version: 6.3.6.0
 
 ### Installation
 
@@ -51,3 +51,4 @@ The current matrix indicates general support. Some metrics may be unavailable or
 | 6.3.0.0          | 2.6.2          | 6.3.2          |
 | 6.3.0.1          | 3.2.0          | 6.3.2          |
 | 6.3.2.0          | 3.2.0          | 6.3.2          |
+| 6.3.2.0          | 6.3.6          | 6.3.6          |
