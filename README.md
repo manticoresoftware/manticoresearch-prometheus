@@ -1,6 +1,6 @@
 # Manticore Search Prometheus Exporter
 
-Version: 6.3.6.0
+Version: 6.3.6.1
 
 ### Installation
 
@@ -51,3 +51,4 @@ The table below shows the compatibility matrix for the exporter and Manticore Se
 | 6.3.0.1          | 3.2.0                 | 6.3.2                 |
 | 6.3.2.0          | 3.2.0                 | 6.3.2                 |
 | 6.3.6.0          | 6.3.6                 | 6.3.7                 |
+| 6.3.6.1          | 6.3.6                 | 6.3.7                 |
