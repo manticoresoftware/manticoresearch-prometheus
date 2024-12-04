@@ -8,6 +8,7 @@ if (file_exists(HEALTH_FILE)) {
 
 
 include('src/Exporter.php');
+header('Content-Type: text/plain');
 
 $manticoreHost = getenv('MANTICORE_HOST');
 $manticorePort = getenv('MANTICORE_PORT');
