@@ -1,4 +1,4 @@
-FROM php:alpine
+FROM php:8.0.6-alpine
 
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
