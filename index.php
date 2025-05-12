@@ -16,8 +16,7 @@ $manticorePort = getenv('MANTICORE_PORT');
 try {
     $mysql = new mysqli($manticoreHost . ":" . $manticorePort);
 } catch (Exception $exception) {
-    echo "Can't connect to Manticore Search at $manticoreHost:$manticorePort\n\n";
-    exit(1);
+    throw new RuntimeException("Can't connect to Manticore Search at $manticoreHost:$manticorePort");
 }
 
 
