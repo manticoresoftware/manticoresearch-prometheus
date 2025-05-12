@@ -1,5 +1,5 @@
 #!/bin/bash
-BUILD_TAG=7.0.0.0
+BUILD_TAG=9.3.2.0
 DOCKER_REPO=manticoresearch/prometheus-exporter
 echo $BUILD_TAG
 echo $DOCKER_REPO
