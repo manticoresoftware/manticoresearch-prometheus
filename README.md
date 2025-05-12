@@ -53,4 +53,5 @@ The table below shows the compatibility matrix for the exporter and Manticore Se
 | 6.3.6.0          | 6.3.6                 | 6.3.7                 |
 | 6.3.6.1          | 6.3.6                 | 6.3.7                 |
 | 6.3.8.0          | 6.3.6                 | 6.3.9                 |
-| 7.0.0.0          | 6.3.6                 | 7.0.0                 |
+| 7.0.0.0          | 6.3.6                 | 9.3.2                 |
+| 9.3.2.0          | 6.3.6                 | 9.3.2                 |
