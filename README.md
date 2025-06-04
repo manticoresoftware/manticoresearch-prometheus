@@ -1,3 +1,13 @@
+## ⚠️ This repository is no longer maintained
+
+All Prometheus exporter logic has been moved to Buddy’s Metrics [plugin](https://github.com/manticoresoftware/manticoresearch-buddy/tree/main/src/Plugin/Metrics).
+
+Please refer to that repository for all updates and ongoing development.
+
+---
+
+
+
 # Manticore Search Prometheus Exporter
 
 Version: 7.0.0.0
